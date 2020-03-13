@@ -1,16 +1,18 @@
-$('.imges > img:nth-child(1)').addClass('current')
-$('.imges > img:nth-child(2)').addClass('enter')
-$('.imges > img:nth-child(3)').addClass('enter')
-let n = 1
+let n
+initializ()
 setInterval(() => {
-    $(`.imges > img:nth-child(${x(n)})`).addClass('leave').removeClass('current')
+    makeLeave(getImge(n))
     .one('transitionend',(e)=>{
-        $(e.currentTarget).removeClass('leave').addClass('enter')
+        makeEnter($(e.currentTarget))
     })
-    $(`.imges > img:nth-child(${x(n+1)})`).addClass('current').removeClass('enter')
+    makeCurrent(getImge(n+1))
     n += 1
 }, 3000);
 
+
+function getImge(n){
+    return $(`.imges > img:nth-child(${x(n)})`)
+}
 function x(n){
     if(n>3){
         n = n%3
@@ -22,5 +24,18 @@ function x(n){
 }
 
 function initializ(){
-    
+    n = 1
+    $('.imges > img:nth-child(1)').addClass('current')
+    $('.imges > img:nth-child(2)').addClass('enter')
+    $('.imges > img:nth-child(3)').addClass('enter')
+}
+function makeLeave($node){
+    $node.addClass('leave').removeClass('current enter')
+    return $node
+}
+function makeEnter($node){
+    $node.addClass('enter').removeClass('current leave')
+}
+function makeCurrent($node){
+    $node.addClass('current').removeClass('enter leave')
 }
