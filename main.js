@@ -1,6 +1,6 @@
 let n
 initializ()
-setInterval(() => {
+let timer = setInterval(() => {
     makeLeave(getImge(n))
     .one('transitionend',(e)=>{
         makeEnter($(e.currentTarget))
@@ -8,6 +8,21 @@ setInterval(() => {
     makeCurrent(getImge(n+1))
     n += 1
 }, 3000);
+
+document.addEventListener('visibilitychange',function(e){
+    if(document.hidden){
+        window.clearInterval(timer)
+    }else{
+        timer = setInterval(() => {
+            makeLeave(getImge(n))
+            .one('transitionend',(e)=>{
+                makeEnter($(e.currentTarget))
+            })
+            makeCurrent(getImge(n+1))
+            n += 1
+        }, 3000);
+    }
+})
 
 
 function getImge(n){
