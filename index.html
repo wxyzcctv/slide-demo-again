@@ -7,15 +7,27 @@
     <title>无缝轮播</title>
 </head>
 <body>
-    <div class="window">
-        <div class="imges">
-            <img src="./1.png" alt="图片" width="400" height="300">
-            <img src="./2.png" alt="图片" width="400" height="300">
-            <img src="./3.png" alt="图片" width="400" height="300">
-            <!-- <img src="./4.png" alt="图片" width="400" height="300">
-            <img src="./5.png" alt="图片" width="400" height="300"> -->
+    <div class="container">
+        <div class="window">
+            <div id="slides" class="imges">
+                <img src="./1.png" alt="图片" width="400" height="300">
+                <img src="./2.png" alt="图片" width="400" height="300">
+                <img src="./3.png" alt="图片" width="400" height="300">
+                <img src="./4.png" alt="图片" width="400" height="300">
+                <!-- <img src="./5.png" alt="图片" width="400" height="300"> -->
+            </div>
         </div>
-    </div>
+        <div class="control">
+            <button id="previous">上一张</button>
+            <button id="next">下一张</button>
+        </div>
+        <div id="buttonWrapper">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+        </div>
+    </di>
     <script src="./jquery-3.2.1.min.js"></script>
     <script src="./main.js"></script>
 </body>
